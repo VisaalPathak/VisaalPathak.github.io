@@ -27,7 +27,7 @@ To verify whether it was installed or not properly in your system enter:
 $ mysql --version
 ```
 If you see something like image below then you are good to go.
-![installation complete](/blob/master/assets/images/version_check.png)
+![installation complete](/assets/images/version_check.png)
 
 ### Configuring MySQL installation using secure installation script
 The mysql_secure_installation script comes by default with the MySQL installation. It allows us to secure our MySQL installation.
