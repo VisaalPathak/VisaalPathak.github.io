@@ -35,7 +35,7 @@ Run  following script to make it more secure:
 ```terminal
 $ sudo mysql_secure_installation
 ```
-Then you will be prompted to validate the password component, enter 'y' and then selecet the password level digit '0' for low, '1' for medimn and '2' for strong password. Then enter the password that satisfies the chosen level of password and additionally, you will be prompted to remove the anonymous users, test databases, and reload the privileges table. Press’ y or n’ according to your choice, and the configuration will be performed successfully.
+Then you will be prompted to validate the password component, enter 'y' and then select the password level digit '0' for low, '1' for medimn and '2' for strong password. Then enter the password that satisfies the chosen level of password and additionally, you will be prompted to remove the anonymous users, test databases, and reload the privileges table. Press’ y or n’ according to your choice, and the configuration will be performed successfully.
 
 ### Creating a new MySQL user
 After you are done with installing the MySQL you need to enter following SQL commands to be able to create users:
@@ -70,5 +70,50 @@ To create tables inside the database, first you need to make sure that you are i
 mysql> USE db_name;
 ```
 Now you will be able to create, update and delete tables inside the database.
+
+#### Creating table
+To be able to store data in table first you need to be able to create table. In MySQL to create table you have to use following syntax:<code> CREATE TABLE table_name (column_1 datatype_and_definition, column_2 datatype_and_definition, column_3 datatype_ ....);</code><br/>
+```terminal
+mysql>  CREATE TABLE new_table (id INT NOT NULL AUTO INCREMENT, name VARCHAR(60) NOT NULL, address VARCHAR, PRIMARY KEY(id));
+```
+#### Adding a new column to the table
+To add a new column to an existing table you can do it using:<code>ALTER TABLE table_name ADD new_column_1 datatype_and_definition;</code>
+```terminal
+mysql> ALTER TABLE new_table ADD contact_details VARCHAR(15);
+```
+Similary, to add a new column after a certain column say column_2, you can use:
+```terminal
+mysql> ALTER TABLE table_name ADD new_column_1 datatype_and_definiton AFTER column_2;
+```
+You can use keywords <code>FIRST</code> and <code>LAST</code> in the similary manner like keyword AFTER to add a new column at the first column or the last column of the table respectively.
+Example of using keyword: FIRST:
+```terminal
+mysql> ALTER TABLE new_table ADD employee_id VARCHAR(15) FIRST;
+```
+To see informations about columns use <code>DESCRIBE column_name;</code><br/>
+For more detailed information about column use:
+```terminal
+mysql> SHOW CREATE table_name;
+```
+You need to remember the naming conventions to make column name standard. Some naming conventions used are:
+* CakeShop
+* cakeshop
+* cake_shop
+* CAKESHOP
+You can use any kind of naming conventions that you want, however mostly above conventions are used worldwide to define columns.
+
+
+
+
+
+
+
+
+
+
+### References
+* https://www.analyticsvidhya.com/blog/2021/06/sql-for-data-science-a-beginners-guide/
+* https://linuxhint.com/install-mysql-linux-mint-ubuntu/
+* https://www.w3schools.com/sql/
 
 
