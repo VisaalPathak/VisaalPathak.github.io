@@ -234,12 +234,12 @@ ORDER BY c.last_name;
 
 
 #### VIEWS
-Views in SQL are also known as virtual tables. You don't want to show every contents of the table to every users, that's where views come in. Using views you can create virtual tables that contains the selected columns from tables.
-<br/>Key points:<br/>
-* Also called virtual tables
-* We can query views just like tables
-* Views are created from one or more underlying tables
-* Views can be used to hide sensitive informations<br/>
+Views in SQL are also known as virtual tables. You don't want to show every contents of the table to every users, that's where views come in. Using views you can create virtual tables that contains the selected columns from tables.<br/>
+* Key points:<br/>
+    *  Also called virtual tables
+    * We can query views just like tables
+    * Views are created from one or more underlying tables
+    * Views can be used to hide sensitive informations<br/>
 Syntax: <code>CREATE VIEW view_name AS</code><br/>
 
 Example:
