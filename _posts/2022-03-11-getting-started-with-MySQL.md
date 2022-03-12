@@ -218,6 +218,7 @@ ORDER BY c.last_name;
 * Used to return data from multiple tables
 * All rows from the right table are returned ...
 * Will return NULL if there's no matching rows in left table
+
 <br/> Example:
 ```
 SELECT c.customer_id,
@@ -230,6 +231,7 @@ FROM customer c RIGHT JOIN actor a
 ON c.last_name = a.last_name
 ORDER BY c.last_name;
 ```
+
 #### VIEWS
 Views in SQL are also known as virtual tables. You don't want to show every contents of the table to every users, that's where views come in. Using views you can create virtual tables that contains the selected columns from tables.
 <br/>Key points:<br/>
@@ -238,6 +240,7 @@ Views in SQL are also known as virtual tables. You don't want to show every cont
 * Views are created from one or more underlying tables
 * Views can be used to hide sensitive informations<br/>
 Syntax: <code>CREATE VIEW view_name AS</code><br/>
+
 Example:
 ```r
 CREATE VIEW vTrial AS
@@ -250,6 +253,7 @@ ON a.actor_id = f.actor_id
 ORDER BY a.actor_id;
 ```
 You can query views the same way you query tables, after they are like the tables created from other tables.
+
 #### Modifying Views
 * By using: ALTER VIEW
 Example:
@@ -289,6 +293,7 @@ AS<br/>
 sql_statement<br/>
 GO;</code><br/>
 To execute Stored procedure you have to use <br/><code>EXEC procedure_name;</code><br/>
+
 
 Example in sakila database:<br/>
 ```r
@@ -363,6 +368,7 @@ In table below:
   </tr>
 </tbody>
 </table>
+
 #### Stored procedures with a parameter
 The following SQL statement creates a stored procedure that selects Customers from a particular City from the "Customers" table:
 
