@@ -232,6 +232,7 @@ ON c.last_name = a.last_name
 ORDER BY c.last_name;
 ```
 
+
 #### VIEWS
 Views in SQL are also known as virtual tables. You don't want to show every contents of the table to every users, that's where views come in. Using views you can create virtual tables that contains the selected columns from tables.
 <br/>Key points:<br/>
