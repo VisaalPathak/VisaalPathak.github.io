@@ -230,14 +230,167 @@ FROM customer c RIGHT JOIN actor a
 ON c.last_name = a.last_name
 ORDER BY c.last_name;
 ```
+#### VIEWS
+Views in SQL are also known as virtual tables. You don't want to show every contents of the table to every users, that's where views come in. Using views you can create virtual tables that contains the selected columns from tables.
+<br/>Key points:<br/>
+* Also called virtual tables
+* We can query views just like tables
+* Views are created from one or more underlying tables
+* Views can be used to hide sensitive informations<br/>
+Syntax: <code>CREATE VIEW view_name AS</code><br/>
+Example:
+```r
+CREATE VIEW vTrial AS
+SELECT a.actor_id,
+		a.first_name,
+        a.last_name,
+        f.film_id
+FROM actor a INNER JOIN film_actor f
+ON a.actor_id = f.actor_id
+ORDER BY a.actor_id;
+```
+You can query views the same way you query tables, after they are like the tables created from other tables.
+#### Modifying Views
+* By using: ALTER VIEW
+Example:
+```r
+ALTER VIEW vTrial AS
+SELECT a.actor_id,
+		a.first_name,
+        a.last_name,
+        f.film_id,
+        f.last_update
+FROM actor a INNER JOIN film_actor f
+ON a.actor_id = f.actor_id
+ORDER BY a.first_name;
+```
+* By using: CREATE OR REPLACE
+```r
+CREATE OR REPLACE VIEW vTrial AS
+SELECT a.actor_id,
+		a.first_name,
+        a.last_name,
+        f.film_id,
+        f.last_update
+FROM actor a INNER JOIN film_actor f
+ON a.actor_id = f.actor_id
+ORDER BY a.first_name;
+```
+You can drop VIEWS in same way you drop TABLES,
+* Syntax: <code>DROP VIEW view_name;<br/>
+ OR,<br/>
+DROP VIEW IF EXISTS view_name1, view_name2; </code>
 
+#### Stored Procedures
+A stored procedure is a prepared SQL code that you can save, so the code can be reused over and over again. So, if you have an SQL query that you write over and over again, save it as a stored procedure, and then just call it to execute it.<br/>
+You can also pass parameters to a stored procedure, so that the stored procedure can act based on the parameter value(s) that is passed.
+* Syntax:<code> CREATE PROCEDURE procedure_name<br/>
+AS<br/>
+sql_statement<br/>
+GO;</code><br/>
+To execute Stored procedure you have to use <br/><code>EXEC procedure_name;</code><br/>
 
+Example in sakila database:<br/>
+```r
+CREATE PROCEDURE select_all_actors
+AS
+SELECT * FROM sakila.actors
+GO;
+```
 
+Now, you don't have to use select statement every time you want to see the actors data. You can just use:
+```r
+EXEC select_all_actors;
+```
 
+Suppose, we had a table:
+In table below:
 
+<table>
+<tbody><tr>
+    <th>CustomerID</th>
+    <th>CustomerName</th>
+    <th>ContactName</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>PostalCode</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>1<br><br></td>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Obere Str. 57</td>
+    <td>Berlin</td>
+    <td>12209</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Ana Trujillo Emparedados y helados</td>
+    <td>Ana Trujillo</td>
+    <td>Avda. de la Constitución 2222</td>
+    <td>México D.F.</td>
+    <td>05021</td>
+    <td>Mexico</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Antonio Moreno Taquería</td>
+    <td>Antonio Moreno</td>
+    <td>Mataderos 2312</td>
+    <td>México D.F.</td>
+    <td>05023</td>
+    <td>Mexico</td>
+  </tr>
+  <tr>
+    <td>4<br><br></td>
+    <td>Around the Horn</td>
+    <td>Thomas Hardy</td>
+    <td>120 Hanover Sq.</td>
+    <td>London</td>
+    <td>WA1 1DP</td>
+    <td>UK</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Berglunds snabbköp</td>
+    <td>Christina Berglund</td>
+    <td>Berguvsvägen 8</td>
+    <td>Luleå</td>
+    <td>S-958 22</td>
+    <td>Sweden</td>
+  </tr>
+</tbody>
+</table>
+#### Stored procedures with a parameter
+The following SQL statement creates a stored procedure that selects Customers from a particular City from the "Customers" table:
 
+```r
+CREATE PROCEDURE SelectAllCustomers @City nvarchar(30)
+AS
+SELECT * FROM Customers WHERE City = @City
+GO;
+```
+and then execute it as:
+```r
+EXEC SelectAllCustomers @City = 'London';
+```
+#### Stored Procedure with Multiple Parameters
+Setting up multiple parameters is very easy. Just list each parameter and the data type separated by a comma as shown below.
 
-
+The following SQL statement creates a stored procedure that selects Customers from a particular City with a particular PostalCode from the "Customers" table:
+```r
+CREATE PROCEDURE SelectAllCustomers @City nvarchar(30), @PostalCode nvarchar(10)
+AS
+SELECT * FROM Customers WHERE City = @City AND PostalCode = @PostalCode
+GO;
+```
+and then execute it as:
+```r
+EXEC SelectAllCustomers @City = 'London', @PostalCode = 'WA1 1DP';
+```
+This is just the basics of the SQL that can get you going further. For more detailed study you can look at the references.
 
 
 
@@ -247,5 +400,7 @@ ORDER BY c.last_name;
 2. https://www.analyticsvidhya.com/blog/2021/06/sql-for-data-science-a-beginners-guide/
 3. https://linuxhint.com/install-mysql-linux-mint-ubuntu/
 4. https://www.w3schools.com/sql/
+5. https://www.w3schools.com/sql/sql_stored_procedures.asp
+6. Windows and Mac Installation on the book "Learning MySQL: Get a Handle on Your Data" (reference 1)
 
 
