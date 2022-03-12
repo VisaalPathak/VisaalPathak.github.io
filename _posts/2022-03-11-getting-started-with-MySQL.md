@@ -3,8 +3,11 @@ title: "Getting Started with MySQL in Linux"
 date: 2022-03-10T01:45:00+05:450
 categories:
   - Blog about MySQL
+  - DBMS Basics
 tags:
   - MySQL
+  - SQL
+  - DBMS
 ---
 ## About
 To be a good Data Scientist you first need to understand about databases because to handle mostly structured data, you need to learn about relational database management systems as structured data are stored in a table inside RDBMS. Every organization maintains their data in a Database and they manage and retrieve data using DBMS. So, to be able to analyse these data, you first need to be able to handle data using DBMS.<br/><br/>
