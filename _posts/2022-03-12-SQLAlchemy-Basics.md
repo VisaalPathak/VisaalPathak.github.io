@@ -89,6 +89,78 @@ Base.metadata.create_all(engine)
 
 You have just created a table named Employee inside the database you have used to create the engine. Once the migrating process is done, this will create the table in the provided database.
 Above code has all the codes and concepts from the topics I discussed earlier above. You can now build the engine, create a session, create a table and migrate it to the database. For verification you can open the terminal, log in to your mysql version and then select the database and see the list of tables. You will see the table named Employee that you just created using python.
+The table that you just created will be empty.
+
+
+### Inserting Data into the newly created table
+Now, let's add some data to our new table <code>Employee</code>.
+```python
+# Instances of class student
+EM1 = Employee(Emp_id = 1, name = "Bishal Pathak", address = "Gachhiya")
+EM2 = Employee(Emp_id = 2, name = "Suraj Dahal", address = "Haldibari")
+EM3 = Employee(Emp_id = 3, name = "Krish Basnet", address = "Itahari")
+EM4 = Employee(Emp_id = 4, name = "Bikash Banjara", address = "Banepa")
+
+# Adding the data to session
+session.add_all([EM1, EM2, EM3, EM4])
+
+# commiting to the session
+session.commit()
+```
+Now, go again into the database and write query in terminal <code>SELECT * FROM Employee;</code> You will now notice new data in the table that you just inserted using python.
+
+
+### Viewing Data in Python
+You can also view data in python. To view data using python you can use code like this:
+```python
+# Showing all data
+Employees = session.query(Employee)
+for E in Employees:
+    print(E.Emp_id, E.name, E.address)
+```
+You will see output like:
+```
+1 Bishal Pathak Gachhiya
+2 Suraj Dahal Haldibari
+3 Krish Basnet Itahari
+4 Bikash Banjara Banepa
+```
+To display data in some order:
+```python
+# Showing data in an order
+Employees = session.query(Employee).order_by(Employee.name)
+for E in Employees:
+    print(E.Emp_id, E.name, E.address)
+```
+Sorted output will be something like this:
+```
+4 Bikash Banjara Banepa
+1 Bishal Pathak Gachhiya
+3 Krish Basnet Itahari
+2 Suraj Dahal Haldibari
+```
+You can filter data as well. An example of filtering data can be:
+```python
+# Getting data by filtering
+employee = session.query(Employee).filter(Employee.name == "Bishal Pathak").first()
+print(employee.Emp_id, employee.name)
+```
+Output:
+```
+1 Bishal Pathak
+```
+
+### Another way to create database
+You can create database by making a connection as like below
+```python 
+from sqlalchemy import create_engine
+engine = create_engine("mysql://u_name:password@localhost:3306", echo = False)
+with engine.connect() as conn:
+    conn.execute("commit")
+    conn.execute("CREATE DATABASE IF NOT EXISTS dbname")
+```
+In the same way, you can also create tables and write and execute SQL queries as well.
+
 
 
 
