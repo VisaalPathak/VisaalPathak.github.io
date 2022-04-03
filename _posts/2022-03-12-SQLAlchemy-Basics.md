@@ -149,17 +149,52 @@ Output:
 ```
 1 Bishal Pathak
 ```
+To update some data you can do something like this:
+```python
+emp = session.query(Employee).filter(Employee.Emp_id == 1).first()
+emp.name = "Visaal Pathak"
+session.commit()
+```
+You should always commit changes when you make some changes in the database.<br/>
+Now, let's see output after updating the data
+```python
+print(emp.Emp_id, emp.name)
+```
+```output
+1 Visaal Pathak
+```
+Similarly, you can delete data from table as well. To delete data you should use code like:
+```python
+emp = session.query(Employee).filter(Employee.Emp_id == 1).first()
+session.delete(emp)
+session.commit()
+```
+Now, after deleting data, let's see all the data in our table:
+```python
+Employees = session.query(Employee)
+for E in Employees:
+    print(E.Emp_id, E.name, E.address)
+```
+Output:
+```output
+2 Suraj Dahal Haldibari
+3 Krish Basnet Itahari
+4 Bikash Banjara Banepa
+```
+We can see that we just deleted a row from our table.
 
 ### Another way to create database
-You can create database by making a connection as like below
+You can also create database by making a connection like below:
 ```python 
 from sqlalchemy import create_engine
 engine = create_engine("mysql://u_name:password@localhost:3306", echo = False)
 with engine.connect() as conn:
-    conn.execute("commit")
     conn.execute("CREATE DATABASE IF NOT EXISTS dbname")
+    conn.execute("commit")
 ```
 In the same way, you can also create tables and write and execute SQL queries as well.
+
+I have covered just the basics of SQLAlchemy and basic ORM techniques in this blog. You can do alot more using SQLALchemy. It is a very useful tool and you will probably be using it with other various libraries to access and use data from database. This blog will just be a means to build a basic foundation of using SQLAlchemy.
 
 
 
