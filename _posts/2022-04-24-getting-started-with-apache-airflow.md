@@ -47,7 +47,7 @@ It will be something like this:
 * AIrflow uses SQLite as its database by default, Hence, in Sequential Executor mode(i.e. default mode), SQLite is used as database facility. However, to be able to execute tasks parallely, you not only need to change the executor to "Local Executor", You also need to change the database to either mysql or postgres in the airflow.cfg file.
 * To change the default database from SQLite to MYSQL, first create a database "airflow_db" that should be utilized by airflow in MySQL. Create a new mysql user and grant all the privileges of the airflow_db to this newly created user. You can do this by entering following commands in mysql:
 
-```mysql
+```python
 -- To create a new database
 create database airflow_db;
 
