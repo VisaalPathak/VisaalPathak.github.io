@@ -46,14 +46,15 @@ It will be something like this:
 * You will probably get a warning about executor i.e. about not using the sequential executor in the production environment in the UI page, that is not shown in the above screenshot. If you want to execute tasks sequentially, then it's not really that important. However, if you are really annoyed by that warning or maybe you want some tasks to run parallely you will need to change the executor to either "Local Executor" or "Celery Executor". Local executor maximizes the use of your local system where as, celery executor utilizes the resources of the workers systems. More on this <a href="https://www.astronomer.io/guides/airflow-executors-explained/">here</a>.
 * AIrflow uses SQLite as its database by default, Hence, in Sequential Executor mode(i.e. default mode), SQLite is used as database facility. However, to be able to execute tasks parallely, you not only need to change the executor to "Local Executor", You also need to change the database to either mysql or postgres in the airflow.cfg file.
 * To change the default database from SQLite to MYSQL, first create a database "airflow_db" that should be utilized by airflow in MySQL. Create a new mysql user and grant all the privileges of the airflow_db to this newly created user. You can do this by entering following commands in mysql:
-```python
-# To create a new database
+
+```mysql
+-- To create a new database
 create database airflow_db;
 
-# To create a new user and grant it all privileges
+-- To create a new user and grant it all privileges
 create user "airflow_user"@"%" identified by "strong-password";
 
-#granting privileges to newlly created user
+-- granting privileges to newlly created user
 GRANT ALL PRIVILEGES ON airflow_db.* TO 'airflow_user';
 FLUSH PRIVILEGES;
 
