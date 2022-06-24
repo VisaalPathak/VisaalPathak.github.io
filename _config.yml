@@ -62,7 +62,7 @@ plugins:
 author:
   name   : "Visaal Pathak"
   avatar : "/assets/images/bio-photo.jpeg"
-  bio    : "A simple Data Science Related blog site"
+  bio    : "Let's Learn Together"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
