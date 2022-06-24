@@ -28,7 +28,7 @@ issues_repo: "VisaalPathak/VisaalPathak.github.io"
 markdown: kramdown
 repository: VisaalPathak/VisaalPathak.github.io
 remote_theme: mmistakes/minimal-mistakes
-logo: "./assets/pp.jpg"
+logo: "./assets/images/pp.jpg"
 # theme: minimal-mistakes-jekyll
 # Outputting
 permalink: /:categories/:title/
