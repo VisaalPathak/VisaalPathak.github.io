@@ -67,3 +67,5 @@ Every time you change the .cfg file, you should set the habit of restarting the 
 Then initialize the database using <code>airflow db init</code>. Then run webserver and scheduler again, then you will get rid of sequential executor warning and be able to run tasks parallely.
 You are now good to go.
 
+<i><b> To be updated Soon</b></i>
+
