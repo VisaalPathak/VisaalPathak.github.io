@@ -59,13 +59,20 @@ GRANT ALL PRIVILEGES ON airflow_db.* TO 'airflow_user';
 FLUSH PRIVILEGES;
 
 ```
-Now, go to the airflow.cfg file and replace:
- <code>sql_alchemy_conn = 'sqlite:////Users/KLoGic/airflow/airflow.db'</code><br/>
-to <code>sql_alchemy_conn = mysql://airflow_user:[password]@localhost:3306/airflow_db</code>
-<br/>
+Now, go to the airflow.cfg file and comment or replace the sqlite config to mysql config as:
+ ```python
+ sql_alchemy_conn = 'sqlite:////Users/KLoGic/airflow/airflow.db'
+```
+to
+```python
+sql_alchemy_conn = mysql://airflow_user:[password]@localhost:3306/airflow_db
+```
 Every time you change the .cfg file, you should set the habit of restarting the airflow webserver and scheduler.<br/>
 Then initialize the database using <code>airflow db init</code>. Then run webserver and scheduler again, then you will get rid of sequential executor warning and be able to run tasks parallely.
 You are now good to go.
 
-<i><b> To be updated Soon</b></i>
+### <b>Creating our first DAG</b>
+We have now set up our database and ready for writing our first dag. What is dag?<br>
+It referes to Directed Acyclic Graph. 
+
 
