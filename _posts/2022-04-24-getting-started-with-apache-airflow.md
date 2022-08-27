@@ -73,6 +73,12 @@ You are now good to go.
 
 ### <b>Creating our first DAG</b>
 We have now set up our database and ready for writing our first dag. What is dag?<br>
-It referes to Directed Acyclic Graph. 
+It referes to Directed Acyclic Graph. It is simply a graph of tasks according to their dependencies among each other.<br>
+Let's write our first dag in airflow. Below is an example of a simple dag that creates a database and creates a table inside the database after which we will create a table and then insert some data to the table.
+```python
+from airflow.models import DAG
+from airflow.providers.mysql.operators.mysql import MySqlOperator
+
+```
 
 
