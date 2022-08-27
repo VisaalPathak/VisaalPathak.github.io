@@ -97,7 +97,7 @@ Now let's create our dag:
 
 Above code is <a href = 'https://github.com/VisaalPathak/Blog_codes/blob/main/airflow/dags/simple_mysql_dag.py'>here</a>.<br>
 We have written a dag, now let's see it in action. After activating aiflow environment, hit <code>airflow webserver</code> and on another window hit <code>airlfow scheduler</code><br>
-Go to: <link>http://0.0.0.0:8080/home</link><br>
+Go to: <link>http://0.0.0.0:8080/home<br>
 You will now be redirected to airflow home page which will be something like this:
 ![dag_home.png](../assets/images/airflow/simple_mysql_dag_home.png)
 Click on the dag name then trigger the dag:
