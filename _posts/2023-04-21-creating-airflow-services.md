@@ -82,9 +82,18 @@ sudo systemctl status airflow-webserver.service
 ```
 If you have successfully started the service, you will see something like this.<br>
 
-[]()image
+![service_status.png](../assets/images/airflow/service_status.png)
 
 
 Congratulations, now you have successfully created a service to start with your system boot so that you can directly go to 0.0.0.0:8080 to access the dags instead of activating the environment and then type airflow webserver and airflow scheduler every time you want to run dags.<br>
 
-For creating service for airflow scheduler, follow the same process to create a file airflow-scheduler.service and then replace the ExecStart with <code>/home/<user_name>/airflow_env/bin/airflow webserver</code>
+For creating service for airflow scheduler, follow the same process to create a file airflow-scheduler.service and then replace the ExecStart with <code>/home/<user_name>/airflow_env/bin/airflow scheduler</code>
+
+
+
+
+
+---
+### REFERENCES
+1. https://www.upsolver.com/blog/airflow-as-a-daemon
+2. <a href="https://teguharif.medium.com/data-engineering-series-run-apache-airflow-as-a-service-on-centos-7-apache-airflow-2-f9ea16fdaef8">Running airflow as a service in centos7</a>
