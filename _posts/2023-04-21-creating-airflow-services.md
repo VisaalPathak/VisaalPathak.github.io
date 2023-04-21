@@ -15,13 +15,16 @@ Airflow is an amazing tool to author, schedule and monitor workflows. It's one o
 
  I am not saying you shouldn't do that. I just feel like you should always try to automate the boring stuff. My first step to do it was creating alias in ~/.bashrc to activate the airlfow environment and run those two commands, but, it turns out linux has a built-in mechanism to create custom services, enabling them to get started at system boot time and start/stop them as a service. I will be sharing a simple way to create a service for your apache-airflow webserver and scheduler, so that you can run it as a service.
 
- ### Create a Service for Airflow Webserver
+ <h3> Create a Service for Airflow Webserver</h3>
 
 #### 1. Creating Unit File for Service 
  First, you will have to create a service file name airflow-webserver.service inside /etc/systemd/sytem/ . Use command below to do it:
  ```bash
  sudo touch /etc/systemd/system/airflow-webserver.service
  ```
+
+
+<br>
 
  #### 2. Writing Service Configuration in the "unit" File
 
