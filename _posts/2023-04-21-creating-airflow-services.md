@@ -22,9 +22,7 @@ Airflow is an amazing tool to author, schedule and monitor workflows. It's one o
  ```bash
  sudo touch /etc/systemd/system/airflow-webserver.service
  ```
-
-
-<br/>
+ Once the file is created you can use vim/nano to write configuration for file.<br/>
 
  #### 2. Writing Service Configuration in the "unit" File
 
@@ -83,15 +81,10 @@ After starting the service check the status of the service by using command:
 ```bash
 sudo systemctl status airflow-webserver.service
 ```
-If you have successfully started the service, you will see something like this.<br/>
-
-
-
+If you have successfully started the service, you will see something like this:<br/>
 ![service_status.png](../assets/images/airflow/service_status.png)
 
 
-
-<br/>
 Congratulations, now you have successfully created a service to start with your system boot so that you can directly go to 0.0.0.0:8080 to access the dags instead of activating the environment and then type airflow webserver and airflow scheduler every time you want to run dags.<br/>
 
 For creating service for airflow scheduler, follow the same process to create a file airflow-scheduler.service and then replace the ExecStart with <code>/home/<user_name>/airflow_env/bin/airflow scheduler</code>
