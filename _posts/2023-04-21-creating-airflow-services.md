@@ -24,12 +24,12 @@ Airflow is an amazing tool to author, schedule and monitor workflows. It's one o
  ```
 
 
-<br>
+<br/>
 
  #### 2. Writing Service Configuration in the "unit" File
 
  The file we just created should specify the dependencies, environment variables, and other details about the webserver process, such as the user and group it should run as, the command to start the process, and how to handle restarts and failures.
-<br>You can use following configuration for getting started:
+<br/>You can use following configuration for getting started:
 ```bash
 [Unit]
 Description=Airflow webserver daemon
@@ -47,17 +47,17 @@ PrivateTmp=true
 [Install]
 WantedBy=multi-user.target
 ```
-Here, <code>Environment</code> and <code>ExecStart</code> should hold values depending on the virtual environment in which you have installed airflow.<br>
+Here, <code>Environment</code> and <code>ExecStart</code> should hold values depending on the virtual environment in which you have installed airflow.<br/>
 
 A short description of above configuration
 
 
-**1. Description**: It's a small description about our service.<br>
-**2. After**: It simply means that your service must be started after the services that are required for your deamon to run, like for apache-airflow we need network, mysql to be ready before it gets started. If your apache-airflow installation requires redis or rabbitmq services than you can specify the dependency here<br>
-**3. Environment**: Tt specifies the file where service will find or create its environment variables<br>
-**4. User**: Your Login username, the specified userid will be used to invoke the service.<br>
-**5. ExecStart** : here you can specify the command to be executed or set the proper path to your script that needs to be excuted. in our case we simple need to run the command airflow webserver<br>
-**6.Restart**: by default, systemd does not restart your service if the program exits for whatever reason. This is usually not what you want for a service that must be always available, so we’re instructing it to always restart on-failure<br>
+**1. Description**: It's a small description about our service.<br/>
+**2. After**: It simply means that your service must be started after the services that are required for your deamon to run, like for apache-airflow we need network, mysql to be ready before it gets started. If your apache-airflow installation requires redis or rabbitmq services than you can specify the dependency here<br/>
+**3. Environment**: Tt specifies the file where service will find or create its environment variables<br/>
+**4. User**: Your Login username, the specified userid will be used to invoke the service.<br/>
+**5. ExecStart** : here you can specify the command to be executed or set the proper path to your script that needs to be excuted. in our case we simple need to run the command airflow webserver<br/>
+**6.Restart**: by default, systemd does not restart your service if the program exits for whatever reason. This is usually not what you want for a service that must be always available, so we’re instructing it to always restart on-failure<br/>
 **&. RestartSec**: by default, systemd attempts a restart after 100ms. You can specify the number of seconds to wait before attempting a restart, using RestartSec.
 
 
@@ -83,12 +83,16 @@ After starting the service check the status of the service by using command:
 ```bash
 sudo systemctl status airflow-webserver.service
 ```
-If you have successfully started the service, you will see something like this.<br>
+If you have successfully started the service, you will see something like this.<br/>
+
+
 
 ![service_status.png](../assets/images/airflow/service_status.png)
 
 
-Congratulations, now you have successfully created a service to start with your system boot so that you can directly go to 0.0.0.0:8080 to access the dags instead of activating the environment and then type airflow webserver and airflow scheduler every time you want to run dags.<br>
+
+<br/>
+Congratulations, now you have successfully created a service to start with your system boot so that you can directly go to 0.0.0.0:8080 to access the dags instead of activating the environment and then type airflow webserver and airflow scheduler every time you want to run dags.<br/>
 
 For creating service for airflow scheduler, follow the same process to create a file airflow-scheduler.service and then replace the ExecStart with <code>/home/<user_name>/airflow_env/bin/airflow scheduler</code>
 
