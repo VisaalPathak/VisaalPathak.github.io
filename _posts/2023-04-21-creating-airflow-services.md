@@ -17,14 +17,14 @@ Airflow is an amazing tool to author, schedule and monitor workflows. It's one o
 
  <h3> Create a Service for Airflow Webserver</h3>
 
-#### 1. Creating Unit File for Service 
+#### Creating Unit File for Service 
  First, you will have to create a service file name airflow-webserver.service inside /etc/systemd/sytem/ . Use command below to do it:
  ```bash
  sudo touch /etc/systemd/system/airflow-webserver.service
  ```
  Once the file is created you can use vim/nano to write configuration for file.<br/>
 
- #### 2. Writing Service Configuration in the "unit" File
+ #### Writing Service Configuration in the "unit" File
 
  The file we just created should specify the dependencies, environment variables, and other details about the webserver process, such as the user and group it should run as, the command to start the process, and how to handle restarts and failures.
 <br/>You can use following configuration for getting started:
@@ -59,7 +59,7 @@ A short description of above configuration
 **&. RestartSec**: by default, systemd attempts a restart after 100ms. You can specify the number of seconds to wait before attempting a restart, using RestartSec.
 
 
-#### 3. Loading, Enabling, and Starting our Service.
+#### Loading, Enabling, and Starting our Service.
 
 First load the service using command:
 ```bash
@@ -82,7 +82,7 @@ After starting the service check the status of the service by using command:
 sudo systemctl status airflow-webserver.service
 ```
 If you have successfully started the service, you will see something like this:<br/>
-![service_status.png](../assets/images/airflow/service_status.png)
+![image](/assets/images/airflow/service_status.png)
 
 
 Congratulations, now you have successfully created a service to start with your system boot so that you can directly go to 0.0.0.0:8080 to access the dags instead of activating the environment and then type airflow webserver and airflow scheduler every time you want to run dags.<br/>
