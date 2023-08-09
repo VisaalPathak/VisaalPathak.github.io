@@ -90,7 +90,7 @@ After successfully installing mysql operators, you will have to make a mysql con
 <code>airflow connections add [connection_name] --conn-type [connection_type] --conn-login [username] --con-password [password] --conn-host [host_name] --conn-port [port]</code><br>
 In my case:
 ```
-airflow connections add 'mysq_default' --conn-type 'mysql' --conn-login 'root' --con-password 'Password' --conn-host 'localhost' --conn-port '3306'
+airflow connections add 'mysq_default' --conn-type 'mysql' --conn-login 'root' --conn-password 'Password' --conn-host 'localhost' --conn-port '3306'
 ```
 Now let's create our dag:
 ![simple_mysql_ops.png](../assets/images/airflow/simple_mysql_op.png)

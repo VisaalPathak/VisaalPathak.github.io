@@ -24,7 +24,7 @@ Airflow is an amazing tool to author, schedule and monitor workflows. It's one o
  ```
  Once the file is created you can use vim/nano to write configuration for file.<br/>
 
- #### Writing Service Configuration in the "unit" File
+ **Writing Service Configuration in the "unit" File**
 
  The file we just created should specify the dependencies, environment variables, and other details about the webserver process, such as the user and group it should run as, the command to start the process, and how to handle restarts and failures.
 <br/>You can use following configuration for getting started:
@@ -51,7 +51,7 @@ A short description of above configuration
 
 
 **1. Description**: It's a small description about our service.<br/>
-**2. After**: It simply means that your service must be started after the services that are required for your deamon to run, like for apache-airflow we need network, mysql to be ready before it gets started. If your apache-airflow installation requires redis or rabbitmq services than you can specify the dependency here<br/>
+**2. After**: It simply means that your service must be started after the services that are required for your daemon to run, like for apache-airflow we need network, mysql to be ready before it gets started. If your apache-airflow installation requires redis or rabbitmq services than you can specify the dependency here<br/>
 **3. Environment**: Tt specifies the file where service will find or create its environment variables<br/>
 **4. User**: Your Login username, the specified userid will be used to invoke the service.<br/>
 **5. ExecStart** : here you can specify the command to be executed or set the proper path to your script that needs to be excuted. in our case we simple need to run the command airflow webserver<br/>
